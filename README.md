@@ -1,0 +1,2 @@
+<h1>Welcome to the project!</h1>
+<p>This is a practice project in which I learned to make ajax calls to the backend. Moreover I learned how to use the fs library in the nodejs framework on the backend. Frontend dynamic code is written in vanilla javascript (no jquery) helped me to understand js more better.</p>
