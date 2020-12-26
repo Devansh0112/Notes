@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes Ajax App</title>
+
+    <style>
+        .topPart{
+            text-align: center;
+            margin-bottom: 100px;
+        }
+
+        #enterNote{
+            float: right;
+            margin-right: 10%;
+        }
+
+        #noteList {
+            list-style: Number;
+        }
+
+        #notes{
+            float: left;
+            margin-left: 5%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="topPart">
+        <h1>Welcome to Notes App</h1>
+        <p>Here we implement a notes app using ajax calls to get and update data in the frontend.The notes are also saved in a file for preservation.</p>
+    </div>
+
+
+    <div id="notes">
+        <h2>Recently Added Notes.</h2>
+        <input type="button" value="Clear Notes" onclick="clearNotes()">
+        <small id="clearMessage"></small>
+        <ol id="noteList">
+        </ol>
+    </div>
+
+    <div id="enterNote">
+        <h2>Add a note here!</h2>
+        <input type="text" placeholder="Enter a note..." id="noteInput">
+        <input type="button" value="Add" onclick="addNote()"><br>
+        <small id="warningText"></small><br>
+    </div>
+
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+    <script src="./index.js"></script>
+</body>
+
+</html>
