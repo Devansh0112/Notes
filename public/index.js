@@ -2,9 +2,7 @@ const getURL = "http://localhost:3000/getNotes";
 const addURL = "http://localhost:3000/addNote";
 const clearURL = "http://localhost:3000/clear";
 
-getNotes();
-
-function getNotes() {
+const getNotes = function () {
   let ul = document.getElementById("noteList");
   ul.innerHTML = "";
 
@@ -19,17 +17,17 @@ function getNotes() {
           ul.appendChild(li);
         });
       } else {
-          let p = document.createElement('p');
-          p.innerHTML = 'No notes yet.';
-          ul.appendChild(p);
+        let p = document.createElement("p");
+        p.innerHTML = "No notes yet.";
+        ul.appendChild(p);
       }
     }
   };
   xhttp1.open("GET", getURL, true);
   xhttp1.send();
-}
+};
 
-function addNote() {
+const addNote = function () {
   let noteInput = document.getElementById("noteInput");
   let warningText = document.getElementById("warningText");
   if (noteInput.value === "") {
@@ -56,9 +54,9 @@ function addNote() {
   }
 
   noteInput.value = "";
-}
+};
 
-function clearNotes() {
+const clearNotes = function () {
   let cm = document.getElementById("clearMessage");
   const xhttp2 = new XMLHttpRequest();
   xhttp2.onreadystatechange = function () {
@@ -72,4 +70,27 @@ function clearNotes() {
   };
   xhttp2.open("GET", clearURL, true);
   xhttp2.send();
+};
+
+function downloadFile() {
+  let xhttp3 = new XMLHttpRequest();
+  xhttp3.onreadystatechange = function () {
+    if (this.readyState === 4 && this.status === 200) {
+      let data = JSON.parse(this.responseText);
+      let csvContent = "data:text/json;charset=utf-8," 
+      csvContent += JSON.stringify(data);
+      var encodedUri = encodeURI(csvContent);
+      var link = document.createElement("a");
+      link.setAttribute("href", encodedUri);
+      link.setAttribute("download", "my_data.json");
+      document.body.appendChild(link); // Required for FF
+
+      link.click();
+    }
+  };
+
+  xhttp3.open("GET", getURL, true);
+  xhttp3.send();
 }
+
+getNotes();

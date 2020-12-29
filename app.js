@@ -22,12 +22,14 @@ app.get('/getNotes', function(req,res){
         notes = JSON.parse(data);
         res.json(notes);
     });
+    console.log('Notes sent successfully...');
 });
 
 app.get('/clear', function(req, res){
     notes = [];
     fs.writeFile('./notes.json', JSON.stringify(notes), (err)=>{
         res.end();
+        console.log('Cleared the notes successfully...');
     });
 });
 
@@ -40,7 +42,8 @@ app.post("/addNote", function (req, res) {
   notes.push(data);
   fs.writeFile('./notes.json', JSON.stringify(notes), (err)=>{
       if (err) console.log('Error while writing to file...');
-      else res.end();
+      else {res.end();
+    console.log('Notes added successfully...');}
   });
 });
 
